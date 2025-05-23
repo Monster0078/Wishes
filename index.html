@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>प्रकाश के इस पर्व पर शुभकामनाएँ!</title>
+    <!-- Google Fonts for a more traditional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for WhatsApp Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for easier theme customization */
+        :root {
+            --primary-gold: #FFD700; /* Gold */
+            --dark-gold: #DAA520; /* Darker Gold */
+            --festival-red: #B00000; /* Deep Red for greetings */
+            --text-dark: #333;
+            --text-light: #fff;
+            --button-bg: #25D366; /* WhatsApp Green */
+            --button-hover: #1DA851;
+            --container-bg: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+        }
+
+        /* General Body Styling - Traditional Theme */
+        body {
+            font-family: 'Hind Siliguri', Arial, sans-serif; /* A good font for Hindi, sans-serif fallback */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background: radial-gradient(circle at top left, var(--dark-gold) 0%, var(--primary-gold) 50%, #f0e68c 100%); /* Richer, festive background */
+            overflow: hidden; /* Hide scrollbar if fireworks go off-screen */
+            position: relative; /* For fireworks container positioning */
+        }
+
+        /* Main Container Styling */
+        .container {
+            background-color: var(--container-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+            text-align: center;
+            max-width: 550px; /* Slightly wider for better layout */
+            width: 100%;
+            box-sizing: border-box;
+            border: 5px solid var(--primary-gold); /* Thicker, more prominent gold border */
+            position: relative; /* To ensure it's above fireworks */
+            z-index: 10;
+        }
+
+        /* Laxmi GIF Styling */
+        .laxmi-gif {
+            width: 100%;
+            max-width: 280px; /* Slightly larger image */
+            height: auto;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite alternate; /* Gentle pulsing effect */
+            border-radius: 10px; /* Slightly rounded corners for the GIF */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        /* Greeting Section Styling */
+        #greeting-section {
+            margin-bottom: 30px;
+        }
+
+        #main-greeting {
+            font-family: 'Playfair Display', serif; /* Decorative font for greeting */
+            font-size: 3em; /* Larger, more impactful greeting */
+            color: var(--festival-red); /* Deep red for festive feel */
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Stronger text shadow */
+            animation: fadeInDown 1.5s ease-out; /* Slower, more graceful entrance */
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #sender-message {
+            font-size: 1.6em; /* Larger sender message */
+            color: var(--text-dark);
+            font-style: italic;
+            animation: fadeInUp 1.5s ease-out; /* Slower, more graceful entrance */
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Input and Share Section Styling */
+        #input-section p, #fallback-share-section p {
+            font-size: 1.2em;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 14px;
+            margin-bottom: 18px;
+            border: 2px solid var(--primary-gold); /* Gold border for inputs */
+            border-radius: 8px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--text-light);
+            padding: 14px 30px;
+            border: none;
+            border-radius: 25px; /* More rounded buttons */
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin: 5px; /* Spacing between buttons */
+            display: inline-flex; /* For icon and text alignment */
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between icon and text */
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        #fallback-share-section {
+            margin-top: 30px;
+            border-top: 1px dashed #ccc; /* Dashed line for separation */
+            padding-top: 25px;
+            display: flex; /* Flexbox for aligning copy button and input */
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center horizontally */
+        }
+
+        #shareLinkOutput {
+            background-color: #fcfcfc;
+            border-color: #e0e0e0;
+            cursor: pointer; /* Indicate it's copyable */
+            margin-bottom: 10px; /* Space between input and copy button */
+        }
+
+        /* Firecracker Effects Styling */
+        #fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allow clicks to pass through */
+            z-index: 5; /* Below the main container */
+        }
+
+        .firecracker {
+            position: absolute;
+            background: radial-gradient(circle at center, #fff, #ffcc00 40%, #ff6600 70%, transparent 100%);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            animation: firecracker-burst 1s forwards; /* 'forwards' keeps the final state */
+            filter: blur(1px); /* Soften the edges */
+        }
+
+        @keyframes firecracker-burst {
+            0% { opacity: 0; transform: scale(0); }
+            10% { opacity: 1; transform: 0.8; }
+            50% { opacity: 0.8; transform: scale(0.8); }
+            100% { opacity: 0; transform: scale(1.2); } /* Expands and fades out */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- लक्ष्मी जी की एनिमेशन इमेज -->
+        <img src="laxmi.gif" alt="लक्ष्मी जी" class="laxmi-gif">
+
+        <!-- ग्रीटिंग सेक्शन (यहाँ Happy Diwali और भेजने वाले का नाम आएगा) -->
+        <div id="greeting-section">
+            <p id="main-greeting"></p>
+            <p id="sender-message"></p>
+        </div>
+
+        <!-- नाम इनपुट और लिंक जनरेट/शेयर करने का सेक्शन -->
+        <div id="input-section">
+            <p>अपना नाम लिखें और WhatsApp पर शेयर करें:</p>
+            <input type="text" id="userNameInput" placeholder="आपका नाम">
+            <button id="shareLinkBtn">
+                <i class="fab fa-whatsapp"></i> WhatsApp पर शेयर करें
+            </button>
+        </div>
+
+        <!-- फ़ॉलबैक: लिंक कॉपी करने का सेक्शन (यदि Web Share API सपोर्टेड न हो) -->
+        <div id="fallback-share-section" style="display: none;">
+            <p>आपका डिवाइस डायरेक्ट शेयरिंग सपोर्ट नहीं करता। लिंक कॉपी करके शेयर करें:</p>
+            <input type="text" id="shareLinkOutput" readonly>
+            <button onclick="copyLink()">कॉपी करें</button>
+        </div>
+    </div>
+
+    <!-- फायरक्रैकर एनिमेशन के लिए कंटेनर -->
+    <div id="fireworks-container"></div>
+
+    <script>
+        // JavaScript लॉजिक
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const senderName = urlParams.get('name'); // URL से 'name' पैरामीटर प्राप्त करें
+
+            const greetingSection = document.getElementById('greeting-section');
+            const mainGreeting = document.getElementById('main-greeting');
+            const senderMessage = document.getElementById('sender-message');
+            const inputSection = document.getElementById('input-section');
+            const shareLinkBtn = document.getElementById('shareLinkBtn'); 
+            const userNameInput = document.getElementById('userNameInput');
+            const fallbackShareSection = document.getElementById('fallback-share-section'); 
+            const shareLinkOutput = document.getElementById('shareLinkOutput');
+            const fireworksContainer = document.getElementById('fireworks-container');
+
+            // Firecracker Logic
+            let firecrackerInterval;
+            const INITIAL_FIRECRACKERS = 20; // 3x increase from 7
+            const CONTINUOUS_FIRECRACKER_INTERVAL = 250; // More frequent, 3x increase from 800ms
+
+            function createFirecracker() {
+                const firecracker = document.createElement('div');
+                firecracker.className = 'firecracker';
+                const size = Math.random() * 50 + 30; 
+                firecracker.style.width = `${size}px`;
+                firecracker.style.height = `${size}px`;
+                firecracker.style.left = `${Math.random() * 100}%`;
+                firecracker.style.top = `${Math.random() * 100}%`;
+                
+                const delay = Math.random() * 0.5; 
+                firecracker.style.animationDelay = `${delay}s`;
+                
+                fireworksContainer.appendChild(firecracker);
+
+                firecracker.addEventListener('animationend', () => {
+                    firecracker.remove();
+                });
+            }
+
+            if (senderName) {
+                mainGreeting.textContent = "Happy Diwali!";
+                senderMessage.innerHTML = `from <span style="color: var(--primary-gold); font-weight: bold;">${decodeURIComponent(senderName)}</span>!`;
+                
+                inputSection.style.display = 'block'; 
+                fallbackShareSection.style.display = 'none';
+
+                // Initial burst of firecrackers (increased)
+                for (let i = 0; i < INITIAL_FIRECRACKERS; i++) {
+                    setTimeout(createFirecracker, i * 50); // Faster staggering
+                }
+                // Continuous firecrackers for the recipient (increased frequency)
+                firecrackerInterval = setInterval(createFirecracker, CONTINUOUS_FIRECRACKER_INTERVAL); 
+
+            } else {
+                mainGreeting.textContent = "दिवाली की शुभकामनाएँ!"; 
+                senderMessage.textContent = "";
+                inputSection.style.display = 'block';
+                fallbackShareSection.style.display = 'none';
+            }
+
+            shareLinkBtn.addEventListener('click', async () => { 
+                const userName = userNameInput.value.trim(); 
+                if (userName) {
+                    const currentBaseUrl = window.location.origin + window.location.pathname;
+                    const shareableLink = `${currentBaseUrl}?name=${encodeURIComponent(userName)}`;
+                    
+                    // WhatsApp share link (direct link)
+                    const whatsappText = `${userName} की ओर से आपको दिवाली की हार्दिक शुभकामनाएँ! ✨ इस लिंक पर क्लिक करके देखें: ${shareableLink}`;
+                    const whatsappLink = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
+
+                    // Try Web Share API first
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: 'आपको दिवाली की शुभकामनाएँ!',
+                                text: `${userName} की ओर से आपको दिवाली की हार्दिक शुभकामनाएँ! ✨`, // For general share
+                                url: shareableLink
+                            });
+                            console.log('Content shared successfully');
+                            // Optional: Hide input after successful share
+                            // inputSection.style.display = 'none'; 
+                            // alert('आपकी शुभकामनाएँ सफलतापूर्वक शेयर हो गईं!');
+                        } catch (error) {
+                            console.error('Error sharing (Web Share API):', error);
+                            // Fallback to direct WhatsApp link if Web Share API fails or is cancelled
+                            window.open(whatsappLink, '_blank');
+                            // If user cancels or something else, show fallback copy link
+                            // showFallbackShare(shareableLink); 
+                        }
+                    } else {
+                        // Fallback for browsers/devices that don't support Web Share API
+                        // Directly open WhatsApp link
+                        window.open(whatsappLink, '_blank');
+                        // Show fallback copy link if direct WhatsApp link doesn't work (e.g., no WhatsApp installed)
+                        // Or if we want to provide another option for users who don't have WhatsApp
+                        // showFallbackShare(shareableLink); 
+                    }
+
+                    // Show firecrackers when user generates link/shares
+                    for (let i = 0; i < 10; i++) { // Increased initial burst on share
+                        setTimeout(createFirecracker, i * 100);
+                    }
+
+                } else {
+                    alert('कृपया अपना नाम दर्ज करें!');
+                }
+            });
+
+            // Function to show the fallback copy link section (only if needed)
+            function showFallbackShare(link) {
+                shareLinkOutput.value = link;
+                fallbackShareSection.style.display = 'block';
+                // Remove the previous alert as we are opening whatsapp directly
+                // alert('आपका डिवाइस डायरेक्ट शेयरिंग सपोर्ट नहीं करता। लिंक कॉपी करके शेयर करें।'); 
+            }
+        });
+
+        // लिंक कॉपी करने का फंक्शन (unchanged)
+        function copyLink() {
+            const shareLinkOutput = document.getElementById('shareLinkOutput');
+            shareLinkOutput.select();
+            shareLinkOutput.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            alert('लिंक कॉपी हो गया! अब आप इसे शेयर कर सकते हैं।');
+        }
+    </script>
+</body>
+</html>
